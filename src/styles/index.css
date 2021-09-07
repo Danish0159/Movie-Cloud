@@ -1,0 +1,48 @@
+@import url(../styles/header.css);
+@import url(../styles/card.css);
+@import url(../styles/form.css);
+@import url(../styles/logo.css);
+@import url(../styles/carosel.css);
+@import url(../styles/footer.css);
+/* ////////////////////////////////////////////// */
+/* Global Styling */
+/* ////////////////////////////////////////////// */
+
+:root {
+  --lightGrey: #fafafa;
+  --midGrey: #ccc;
+  --darkGrey: #343434;
+  --limeGreen: #00fc87;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  background-color: black;
+}
+
+h1 {
+  font-size: 40px;
+  color: var(--lightGrey);
+}
+
+h2 {
+  font-size: 25px;
+  color: var(--lightGrey);
+}

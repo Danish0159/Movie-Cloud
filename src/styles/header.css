@@ -1,0 +1,14 @@
+.header {
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.85) 15%,
+      rgba(0, 0, 0, 0.2) 40%,
+      rgba(0, 0, 0, 1) 90%
+    ),
+    url(https://cdn.pixabay.com/photo/2017/07/23/16/01/nature-2531761__340.jpg);
+  object-fit: contain;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: black;
+  /* background-attachment: fixed; */
+  min-height: 140vh;
+}

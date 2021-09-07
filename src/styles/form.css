@@ -1,0 +1,44 @@
+/* ////////////////////////////////////////////// */
+/* Search Form */
+/* ////////////////////////////////////////////// */
+.form {
+  /* position: relative; */
+  margin-top: 10px;
+  flex: 0.57;
+}
+
+@media screen and (max-width: 750px) {
+  .form {
+    min-width: 95vw;
+    margin-top: 36px;
+  }
+}
+
+.form__input {
+  width: 100%;
+  font-size: 1.5rem;
+  border: none;
+  outline: none;
+  caret-color: white;
+  background: transparent;
+  color: white;
+  padding: 0px 0px 10px 10px;
+  border-bottom: 1px solid white;
+}
+
+.typehead {
+  /* position: absolute; */
+  /* position: fixed; */
+  display: flex;
+  flex-direction: column;
+  color: white;
+  z-index: 100;
+  background: none;
+  padding: 0.2rem 0.2rem;
+  font-size: 2rem;
+}
+.typehead:hover {
+  color: black;
+  background-color: var(--limeGreen);
+  cursor: pointer;
+}

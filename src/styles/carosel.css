@@ -1,0 +1,30 @@
+.carosel__section {
+  width: 100%;
+  background-color: black;
+  height: 270px;
+}
+
+.swiper-container {
+  width: 100%;
+}
+
+/* @media screen and (max-width: 700px) {
+  .swiper-container {
+    width: 800px;
+  }
+} */
+
+.swiper-slide {
+  height: 168px !important;
+  width: 300px !important;
+}
+
+.swiper-slide img {
+  height: 100%;
+  width: 100%;
+}
+
+.carosel__title {
+  padding: 2rem 0rem;
+  margin-left: 4px;
+}
