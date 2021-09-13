@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useGlobalContext } from '../context/context.js'
 
 const SearchForm = () => {
-  const { movies, query, setQuery } = useGlobalContext();
+  const { arrayM, setArrayM, movies, setMovies, query, setQuery } = useGlobalContext();
+  const [hideTypehead, setHideTypehead] = useState(false);
 
-  console.log(movies);
 
   return (
     <>
@@ -13,16 +13,28 @@ const SearchForm = () => {
           type='text'
           className='form__input'
           value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          onChange={(e) => {
+            setQuery(e.target.value)
+            setHideTypehead(false)
+          }}
           placeholder="Search Movie Title..."
         />
 
-        {
-          movies && movies.map((movie, i) =>
-            <div className="typehead" key={i}>{movie.Title}</div>
-          )
-        }
+        <div className={hideTypehead ? "typehead_parent noneClass" : "typehead_parent"}>
+          {
+            movies && movies.slice(0, 4).map((movie, i) =>
+              <div onClick={() => {
+                console.log(i);
+                setHideTypehead(true);
+                setQuery("");
+                setArrayM(movie);
+              }} className="typehead" key={i}>{movie.Title}</div>
+            )
+          }
+
+        </div>
       </form>
+
     </>
   )
 }

@@ -3,8 +3,10 @@ import React, { useState, useContext, useEffect } from 'react'
 const AppContext = React.createContext()
 
 const AppProvider = ({ children }) => {
-  const [query, setQuery] = useState("batman");
+  const [query, setQuery] = useState("Interstellar");
   const [movies, setMovies] = useState(null);
+  const [arrayM, setArrayM] = useState(false);
+
 
   const FetchMovies = async () => {
     try {
@@ -25,6 +27,8 @@ const AppProvider = ({ children }) => {
             backdrop_path,
             release_date,
             vote_average,
+            popularity,
+            vote_count
           } = item
 
           return {
@@ -35,6 +39,8 @@ const AppProvider = ({ children }) => {
             BackDrop: backdrop_path,
             Release: release_date,
             Vote: vote_average,
+            Popularity: popularity,
+            Vote_count: vote_count,
           }
         })
         setMovies(MovieData);
@@ -51,8 +57,7 @@ const AppProvider = ({ children }) => {
     FetchMovies();
   }, [query])
 
-  return <AppContext.Provider value={{ movies, query, setQuery }}>{children}</AppContext.Provider>
-
+  return <AppContext.Provider value={{ arrayM, setArrayM, movies, setMovies, query, setQuery }}>{children}</AppContext.Provider>
 }
 
 export const useGlobalContext = () => {

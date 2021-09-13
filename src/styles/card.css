@@ -22,6 +22,7 @@
 }
 
 .cardImage__container img {
+  display: block;
   border-radius: 3px 0 0px 3px;
   width: 100%;
 }
@@ -35,6 +36,7 @@
   font-size: 40px;
   color: var(--lightGrey);
   margin-bottom: 8px;
+  text-transform: uppercase;
 }
 
 .card__tagline {

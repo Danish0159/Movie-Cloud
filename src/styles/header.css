@@ -9,6 +9,5 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-color: black;
-  /* background-attachment: fixed; */
-  min-height: 140vh;
+  min-height: 100vh;
 }

@@ -2,12 +2,12 @@
 /* Search Form */
 /* ////////////////////////////////////////////// */
 .form {
-  /* position: relative; */
   margin-top: 10px;
   flex: 0.57;
+  position: relative;
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 768px) {
   .form {
     min-width: 95vw;
     margin-top: 36px;
@@ -22,23 +22,31 @@
   caret-color: white;
   background: transparent;
   color: white;
-  padding: 0px 0px 10px 10px;
+  padding: 0px 0px 10px 15px;
   border-bottom: 1px solid white;
 }
 
-.typehead {
-  /* position: absolute; */
-  /* position: fixed; */
+.typehead_parent {
+  position: absolute;
+  z-index: 100;
   display: flex;
   flex-direction: column;
   color: white;
-  z-index: 100;
-  background: none;
-  padding: 0.2rem 0.2rem;
+  background: black;
+  width: 100%;
+}
+
+.typehead {
+  padding: 1rem 2.2rem;
   font-size: 2rem;
 }
+
 .typehead:hover {
   color: black;
   background-color: var(--limeGreen);
   cursor: pointer;
+}
+
+.noneClass {
+  display: none;
 }
