@@ -63,7 +63,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <Csrosel></Csrosel>
+        {/* <Csrosel></Csrosel> */}
         <Footer></Footer>
       </>
     )
@@ -112,7 +112,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <Csrosel></Csrosel>
+        {/* <Csrosel></Csrosel> */}
         <Footer></Footer>
       </>
     )
