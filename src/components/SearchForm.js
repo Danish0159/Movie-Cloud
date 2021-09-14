@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useGlobalContext } from '../context/context.js'
 
 const SearchForm = () => {
-  const { arrayM, setArrayM, movies, setMovies, query, setQuery } = useGlobalContext();
+  const { setSingleMovie, movies, setMovies, query, setQuery } = useGlobalContext();
   const [hideTypehead, setHideTypehead] = useState(false);
 
 
@@ -24,10 +24,9 @@ const SearchForm = () => {
           {
             movies && movies.slice(0, 4).map((movie, i) =>
               <div onClick={() => {
-                console.log(i);
                 setHideTypehead(true);
                 setQuery("");
-                setArrayM(movie);
+                setSingleMovie(movie);
               }} className="typehead" key={i}>{movie.Title}</div>
             )
           }

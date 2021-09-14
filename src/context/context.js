@@ -5,9 +5,9 @@ const AppContext = React.createContext()
 const AppProvider = ({ children }) => {
   const [query, setQuery] = useState("Interstellar");
   const [movies, setMovies] = useState(null);
-  const [arrayM, setArrayM] = useState(false);
+  const [singleMovie, setSingleMovie] = useState(false);
 
-
+  // Fetch Movies for search Results 
   const FetchMovies = async () => {
     try {
       const API_KEY = "0cc06e650b39b1e1783c5722b8c077b2";
@@ -15,7 +15,6 @@ const AppProvider = ({ children }) => {
       const data = await responce.json();
 
       const { results } = data;
-      console.log(results);
 
       if (results) {
         const MovieData = results.map((item) => {
@@ -49,7 +48,7 @@ const AppProvider = ({ children }) => {
         setMovies([]);
       }
     } catch (error) {
-      console.log(error);
+      alert(error);
     }
   }
 
@@ -57,7 +56,7 @@ const AppProvider = ({ children }) => {
     FetchMovies();
   }, [query])
 
-  return <AppContext.Provider value={{ arrayM, setArrayM, movies, setMovies, query, setQuery }}>{children}</AppContext.Provider>
+  return <AppContext.Provider value={{ singleMovie, setSingleMovie, movies, setMovies, query, setQuery }}>{children}</AppContext.Provider>
 }
 
 export const useGlobalContext = () => {
@@ -75,23 +74,3 @@ export { AppContext, AppProvider }
  Whenever we want to use the state (app provider) will just import AppContext.
  */
 
-/*
-      // Top rated.
-      https://api.themoviedb.org/3/movie/top_rated?api_key=<<api_key>>&language=en-US&page=1
-      // Trending.
-      https://api.themoviedb.org/3/trending/all/day?api_key=${API_KEY}
-      // Action Movies.
-      https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=28
-      // Comedy Movies.
-      https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=35
-      // Horror Movies.
-      https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=27
-      // Romance Movies.
-      https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=10749
-      // Documentries Movies.
-      https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=99
-
-
-// Search.
-      https://api.themoviedb.org/3/search/movie/batman?api_key=<<api_key>>&language=en-US&page=1&include_adult=false
-      */

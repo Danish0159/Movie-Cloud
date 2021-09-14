@@ -1,57 +1,35 @@
-import React, { useRef, useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/swiper.min.css";
-import "../styles/carosel.css";
+import React, { useState, useEffect } from "react";
 
-
-export default function Carosel() {
+export default function Carosel({ title, fetchUrl }) {
     const [width, setWidth] = useState(window.innerWidth);
+    const [movies, setMovies] = useState([]);
+    const base_url = "https://image.tmdb.org/t/p/original/";
 
-    if (width > 1000) {
-        return (
-            <div className="carosel__section">
-                <h2 className="carosel__title">POPULAR</h2>
-                <Swiper watchSlidesProgress={true} watchSlidesVisibility={true} slidesPerView={5} className="mySwiper">
-                    <SwiperSlide><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPEAAADRCAMAAAAquaQNAAAAA1BMVEX///+nxBvIAAAAR0lEQVR4nO3BMQEAAADCoPVP7WULoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABuxZIAAeHuCGgAAAAASUVORK5CYII=" alt="Image 5" /></SwiperSlide>
-                    <SwiperSlide><img src="https://www.designhill.com/design-blog/wp-content/uploads/2017/08/253.jpg" alt="Image 2" /></SwiperSlide>
-                    <SwiperSlide><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPEAAADRCAMAAAAquaQNAAAAA1BMVEX///+nxBvIAAAAR0lEQVR4nO3BMQEAAADCoPVP7WULoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABuxZIAAeHuCGgAAAAASUVORK5CYII=" alt="Image 5" /></SwiperSlide>
-                    <SwiperSlide><img src="https://www.designhill.com/design-blog/wp-content/uploads/2017/08/253.jpg" alt="Image 2" /></SwiperSlide>
-                    <SwiperSlide><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPEAAADRCAMAAAAquaQNAAAAA1BMVEX///+nxBvIAAAAR0lEQVR4nO3BMQEAAADCoPVP7WULoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABuxZIAAeHuCGgAAAAASUVORK5CYII=" alt="Image 5" /></SwiperSlide>
-                    <SwiperSlide><img src="https://www.designhill.com/design-blog/wp-content/uploads/2017/08/253.jpg" alt="Image 2" /></SwiperSlide>
-                    <SwiperSlide><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPEAAADRCAMAAAAquaQNAAAAA1BMVEX///+nxBvIAAAAR0lEQVR4nO3BMQEAAADCoPVP7WULoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABuxZIAAeHuCGgAAAAASUVORK5CYII=" alt="Image 5" /></SwiperSlide>
-                    <SwiperSlide><img src="https://www.designhill.com/design-blog/wp-content/uploads/2017/08/253.jpg" alt="Image 2" /></SwiperSlide>
-                    <SwiperSlide><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPEAAADRCAMAAAAquaQNAAAAA1BMVEX///+nxBvIAAAAR0lEQVR4nO3BMQEAAADCoPVP7WULoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABuxZIAAeHuCGgAAAAASUVORK5CYII=" alt="Image 5" /></SwiperSlide>
-                    <SwiperSlide><img src="https://www.designhill.com/design-blog/wp-content/uploads/2017/08/253.jpg" alt="Image 2" /></SwiperSlide>
-                    <SwiperSlide><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPEAAADRCAMAAAAquaQNAAAAA1BMVEX///+nxBvIAAAAR0lEQVR4nO3BMQEAAADCoPVP7WULoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABuxZIAAeHuCGgAAAAASUVORK5CYII=" alt="Image 5" /></SwiperSlide>
-                    <SwiperSlide><img src="https://www.designhill.com/design-blog/wp-content/uploads/2017/08/253.jpg" alt="Image 2" /></SwiperSlide>
-                    <SwiperSlide><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPEAAADRCAMAAAAquaQNAAAAA1BMVEX///+nxBvIAAAAR0lEQVR4nO3BMQEAAADCoPVP7WULoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABuxZIAAeHuCGgAAAAASUVORK5CYII=" alt="Image 5" /></SwiperSlide>
-                    <SwiperSlide><img src="https://www.designhill.com/design-blog/wp-content/uploads/2017/08/253.jpg" alt="Image 2" /></SwiperSlide>
-                    <SwiperSlide><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPEAAADRCAMAAAAquaQNAAAAA1BMVEX///+nxBvIAAAAR0lEQVR4nO3BMQEAAADCoPVP7WULoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABuxZIAAeHuCGgAAAAASUVORK5CYII=" alt="Image 5" /></SwiperSlide>
-                </Swiper>
-            </div>
-        )
+
+    const FetchMovies = async () => {
+        try {
+            const responce = await fetch(fetchUrl);
+            const data = await responce.json();
+            setMovies(data.results);
+        } catch (error) {
+            alert(error);
+        }
     }
+
+    useEffect(() => {
+        FetchMovies();
+    }, [fetchUrl])
 
     return (
         <div className="carosel__section">
-            <h2 className="carosel__title">POPULAR</h2>
-            <Swiper watchSlidesProgress={true} watchSlidesVisibility={true} slidesPerView={1} className="mySwiper">
-                <SwiperSlide><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPEAAADRCAMAAAAquaQNAAAAA1BMVEX///+nxBvIAAAAR0lEQVR4nO3BMQEAAADCoPVP7WULoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABuxZIAAeHuCGgAAAAASUVORK5CYII=" alt="Image 5" /></SwiperSlide>
-                <SwiperSlide><img src="https://www.designhill.com/design-blog/wp-content/uploads/2017/08/253.jpg" alt="Image 2" /></SwiperSlide>
-                <SwiperSlide><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPEAAADRCAMAAAAquaQNAAAAA1BMVEX///+nxBvIAAAAR0lEQVR4nO3BMQEAAADCoPVP7WULoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABuxZIAAeHuCGgAAAAASUVORK5CYII=" alt="Image 5" /></SwiperSlide>
-                <SwiperSlide><img src="https://www.designhill.com/design-blog/wp-content/uploads/2017/08/253.jpg" alt="Image 2" /></SwiperSlide>
-                <SwiperSlide><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPEAAADRCAMAAAAquaQNAAAAA1BMVEX///+nxBvIAAAAR0lEQVR4nO3BMQEAAADCoPVP7WULoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABuxZIAAeHuCGgAAAAASUVORK5CYII=" alt="Image 5" /></SwiperSlide>
-                <SwiperSlide><img src="https://www.designhill.com/design-blog/wp-content/uploads/2017/08/253.jpg" alt="Image 2" /></SwiperSlide>
-                <SwiperSlide><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPEAAADRCAMAAAAquaQNAAAAA1BMVEX///+nxBvIAAAAR0lEQVR4nO3BMQEAAADCoPVP7WULoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABuxZIAAeHuCGgAAAAASUVORK5CYII=" alt="Image 5" /></SwiperSlide>
-                <SwiperSlide><img src="https://www.designhill.com/design-blog/wp-content/uploads/2017/08/253.jpg" alt="Image 2" /></SwiperSlide>
-                <SwiperSlide><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPEAAADRCAMAAAAquaQNAAAAA1BMVEX///+nxBvIAAAAR0lEQVR4nO3BMQEAAADCoPVP7WULoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABuxZIAAeHuCGgAAAAASUVORK5CYII=" alt="Image 5" /></SwiperSlide>
-                <SwiperSlide><img src="https://www.designhill.com/design-blog/wp-content/uploads/2017/08/253.jpg" alt="Image 2" /></SwiperSlide>
-                <SwiperSlide><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPEAAADRCAMAAAAquaQNAAAAA1BMVEX///+nxBvIAAAAR0lEQVR4nO3BMQEAAADCoPVP7WULoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABuxZIAAeHuCGgAAAAASUVORK5CYII=" alt="Image 5" /></SwiperSlide>
-                <SwiperSlide><img src="https://www.designhill.com/design-blog/wp-content/uploads/2017/08/253.jpg" alt="Image 2" /></SwiperSlide>
-                <SwiperSlide><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPEAAADRCAMAAAAquaQNAAAAA1BMVEX///+nxBvIAAAAR0lEQVR4nO3BMQEAAADCoPVP7WULoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABuxZIAAeHuCGgAAAAASUVORK5CYII=" alt="Image 5" /></SwiperSlide>
-                <SwiperSlide><img src="https://www.designhill.com/design-blog/wp-content/uploads/2017/08/253.jpg" alt="Image 2" /></SwiperSlide>
-                <SwiperSlide><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPEAAADRCAMAAAAquaQNAAAAA1BMVEX///+nxBvIAAAAR0lEQVR4nO3BMQEAAADCoPVP7WULoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABuxZIAAeHuCGgAAAAASUVORK5CYII=" alt="Image 5" /></SwiperSlide>
-            </Swiper>
+            <h2 className="carosel__title">{title}</h2>
+            <div className="carosel__movies">
+                {
+                    movies.map(movie => (
+                        movie.backdrop_path && <img className="carosel__movie" src={`${base_url}${movie.backdrop_path}`} alt="" />
+                    ))
+                }
+            </div>
         </div>
     )
 }

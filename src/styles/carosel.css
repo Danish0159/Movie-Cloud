@@ -1,24 +1,30 @@
-.carosel__section {
-  width: 100%;
-  background-color: black;
-  height: 270px;
-}
-
-.swiper-container {
-  width: 100%;
-}
-
-.swiper-slide {
-  height: 168px !important;
-  width: 300px !important;
-}
-
-.swiper-slide img {
-  height: 100%;
-  width: 100%;
-}
-
 .carosel__title {
-  padding: 2rem 0rem;
-  margin-left: 4px;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+  margin-left: 1rem;
+}
+
+.carosel__movies {
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  padding: 20px;
+}
+
+.carosel__movies::-webkit-scrollbar {
+  display: none;
+}
+
+.carosel__movie {
+  max-height: 150px;
+  object-fit: contain;
+  width: 100%;
+  margin-right: 10px;
+  transition: transform 450ms;
+}
+
+.carosel__movie:hover {
+  transform: scale(1.08);
+  opacity: 1;
 }
