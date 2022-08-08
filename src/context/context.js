@@ -73,4 +73,3 @@ export { AppContext, AppProvider }
 /*
  Whenever we want to use the state (app provider) will just import AppContext.
  */
-
